@@ -90,16 +90,16 @@
   <div class="settings-row">
     <div class="field" style="flex:2">
       <label>API Key (Together AI)</label>
-      <input type="password" id="api-key" placeholder="Get free key at api.together.xyz"/>
+      <input type="password" id="api-key" placeholder="Get free key at console.groq.com"/>
     </div>
     <div class="field">
       <label>Model</label>
       <select id="model-select">
-        <option value="meta-llama/Llama-3.3-70B-Instruct-Turbo">Llama 3.3 70B (fast)</option>
-        <option value="meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo">Llama 3.1 405B (smart)</option>
-        <option value="mistralai/Mixtral-8x7B-Instruct-v0.1">Mixtral 8x7B</option>
-        <option value="NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO">Nous Hermes 2 (uncensored)</option>
-        <option value="Qwen/Qwen2.5-72B-Instruct-Turbo">Qwen 2.5 72B</option>
+        <option value="llama-3.3-70b-versatile">Llama 3.3 70B (best)</option>
+        <option value="llama-3.1-8b-instant">Llama 3.1 8B (fastest)</option>
+        <option value="mixtral-8x7b-32768">Mixtral 8x7B</option>
+        <option value="gemma2-9b-it">Gemma 2 9B</option>
+        <option value="deepseek-r1-distill-llama-70b">DeepSeek R1 70B (smart)</option>
       </select>
     </div>
   </div>
@@ -246,7 +246,7 @@ async function send() {
   addTyping();
 
   try {
-    const res = await fetch('https://api.together.xyz/v1/chat/completions', {
+    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
