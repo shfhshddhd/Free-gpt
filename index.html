@@ -12,55 +12,42 @@
     --text:#e5e5e5;--muted:#666;--user-bg:#1e1b4b;--ai-bg:#1a1a1a;
   }
   body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;height:100vh;display:flex;flex-direction:column}
-
-  /* HEADER */
   header{padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-shrink:0}
   header h1{font-size:18px;font-weight:700;background:linear-gradient(135deg,var(--accent2),#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
   .badge{font-size:10px;padding:2px 8px;background:#ff000022;color:#f87171;border:1px solid #f8717133;border-radius:20px;font-weight:600}
   .settings-btn{margin-left:auto;background:var(--border);border:none;color:var(--text);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:13px}
   .settings-btn:hover{background:#333}
-
-  /* SETTINGS PANEL */
   #settings{display:none;background:var(--surface);border-bottom:1px solid var(--border);padding:16px 20px;gap:12px;flex-direction:column}
   #settings.open{display:flex}
   .settings-row{display:flex;gap:12px;flex-wrap:wrap}
   .field{display:flex;flex-direction:column;gap:5px;flex:1;min-width:200px}
   .field label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
   .field input,.field select,.field textarea{background:#111;border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px;outline:none;font-family:inherit}
-  .field input:focus,.field select,.field textarea:focus{border-color:var(--accent)}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
   .field textarea{resize:vertical;min-height:60px;max-height:120px}
   .save-btn{background:var(--accent);border:none;color:#fff;padding:8px 20px;border-radius:8px;cursor:pointer;font-weight:600;font-size:13px;align-self:flex-end}
   .save-btn:hover{background:var(--accent2)}
-
-  /* CHAT */
   #chat{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px;scroll-behavior:smooth}
   #chat::-webkit-scrollbar{width:4px}
   #chat::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-
   .msg{display:flex;gap:10px;max-width:820px;animation:fadeIn .2s ease}
   .msg.user{align-self:flex-end;flex-direction:row-reverse}
   .msg.ai{align-self:flex-start}
   @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-
   .avatar{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
   .msg.user .avatar{background:var(--accent)}
   .msg.ai .avatar{background:#1f2937}
-
   .bubble{padding:12px 16px;border-radius:12px;font-size:14px;line-height:1.65;max-width:680px;white-space:pre-wrap;word-break:break-word}
   .msg.user .bubble{background:var(--user-bg);border-bottom-right-radius:4px}
   .msg.ai .bubble{background:var(--ai-bg);border:1px solid var(--border);border-bottom-left-radius:4px}
-
   .bubble code{background:#111;padding:2px 6px;border-radius:4px;font-size:12px;font-family:'Courier New',monospace;color:#a78bfa}
   .bubble pre{background:#111;border:1px solid var(--border);border-radius:8px;padding:12px;overflow-x:auto;margin:8px 0}
   .bubble pre code{background:none;padding:0;color:#e5e5e5}
-
   .typing{display:flex;gap:4px;align-items:center;padding:14px 16px}
   .typing span{width:6px;height:6px;background:var(--muted);border-radius:50%;animation:bounce .9s infinite}
   .typing span:nth-child(2){animation-delay:.15s}
   .typing span:nth-child(3){animation-delay:.3s}
   @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-
-  /* INPUT */
   #input-area{padding:16px 20px;background:var(--surface);border-top:1px solid var(--border);flex-shrink:0}
   .input-wrap{display:flex;gap:10px;align-items:flex-end;max-width:860px;margin:0 auto}
   #user-input{flex:1;background:#111;border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:12px;font-size:14px;font-family:inherit;resize:none;outline:none;min-height:44px;max-height:160px;line-height:1.5}
@@ -70,7 +57,6 @@
   #send-btn:disabled{background:var(--border);cursor:not-allowed}
   .clear-btn{background:transparent;border:1px solid var(--border);color:var(--muted);width:44px;height:44px;border-radius:12px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .clear-btn:hover{border-color:#f87171;color:#f87171}
-
   .empty-state{margin:auto;text-align:center;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:12px}
   .empty-state .icon{font-size:48px}
   .empty-state h2{font-size:22px;color:var(--text)}
@@ -89,17 +75,16 @@
 <div id="settings">
   <div class="settings-row">
     <div class="field" style="flex:2">
-      <label>API Key (Together AI)</label>
-      <input type="password" id="api-key" placeholder="Get free key at console.groq.com"/>
+      <label>Google AI Studio API Key</label>
+      <input type="password" id="api-key" placeholder="aistudio.google.com se free key lo"/>
     </div>
     <div class="field">
       <label>Model</label>
       <select id="model-select">
-        <option value="llama-3.3-70b-versatile">Llama 3.3 70B (best)</option>
-        <option value="llama-3.1-8b-instant">Llama 3.1 8B (fastest)</option>
-        <option value="mixtral-8x7b-32768">Mixtral 8x7B</option>
-        <option value="gemma2-9b-it">Gemma 2 9B</option>
-        <option value="deepseek-r1-distill-llama-70b">DeepSeek R1 70B (smart)</option>
+        <option value="gemini-2.0-flash">Gemini 2.0 Flash (best & fast)</option>
+        <option value="gemini-2.0-flash-lite">Gemini 2.0 Flash Lite (fastest)</option>
+        <option value="gemini-1.5-pro">Gemini 1.5 Pro (smart)</option>
+        <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
       </select>
     </div>
   </div>
@@ -116,14 +101,14 @@
   <div class="empty-state" id="empty">
     <div class="icon">🔓</div>
     <h2>FreeGPT</h2>
-    <p>No filters. No refusals. No lectures.<br/>Configure your API key in Settings and ask anything.</p>
+    <p>No filters. No refusals. No lectures.<br/>⚙ Settings mein API key dalo aur poochho kuch bhi.</p>
   </div>
 </div>
 
 <div id="input-area">
   <div class="input-wrap">
     <button class="clear-btn" onclick="clearChat()" title="Clear chat">🗑</button>
-    <textarea id="user-input" placeholder="Ask anything..." rows="1"></textarea>
+    <textarea id="user-input" placeholder="Kuch bhi poochho..." rows="1"></textarea>
     <button id="send-btn" onclick="send()">➤</button>
   </div>
 </div>
@@ -134,10 +119,9 @@ const inputEl = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
 const emptyEl = document.getElementById('empty');
 
-let messages = [];
+let history = [];
 let busy = false;
 
-// auto-resize textarea
 inputEl.addEventListener('input', () => {
   inputEl.style.height = 'auto';
   inputEl.style.height = Math.min(inputEl.scrollHeight, 160) + 'px';
@@ -168,7 +152,7 @@ function loadSettings() {
 }
 
 function clearChat() {
-  messages = [];
+  history = [];
   chatEl.innerHTML = '';
   chatEl.appendChild(emptyEl);
   emptyEl.style.display = 'flex';
@@ -188,16 +172,12 @@ function addMsg(role, text) {
   wrap.appendChild(bub);
   chatEl.appendChild(wrap);
   chatEl.scrollTop = chatEl.scrollHeight;
-  return bub;
 }
 
 function formatText(t) {
-  // code blocks
   t = t.replace(/```(\w*)\n?([\s\S]*?)```/g, (_, lang, code) =>
     `<pre><code>${escHtml(code.trim())}</code></pre>`);
-  // inline code
   t = t.replace(/`([^`]+)`/g, (_, c) => `<code>${escHtml(c)}</code>`);
-  // bold
   t = t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   return t;
 }
@@ -241,25 +221,23 @@ async function send() {
   busy = true;
   sendBtn.disabled = true;
 
-  messages.push({ role: 'user', content: text });
+  history.push({ role: 'user', parts: [{ text }] });
   addMsg('user', text);
   addTyping();
 
   try {
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+    const res = await fetch(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model,
-        max_tokens: 2048,
-        temperature: 0.8,
-        messages: [
-          { role: 'system', content: sysprompt },
-          ...messages
-        ]
+        system_instruction: { parts: [{ text: sysprompt }] },
+        contents: history,
+        generationConfig: {
+          temperature: 0.9,
+          maxOutputTokens: 2048
+        }
       })
     });
 
@@ -269,14 +247,14 @@ async function send() {
       throw new Error(data.error?.message || `HTTP ${res.status}`);
     }
 
-    const reply = data.choices?.[0]?.message?.content || '(empty response)';
-    messages.push({ role: 'assistant', content: reply });
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || '(empty response)';
+    history.push({ role: 'model', parts: [{ text: reply }] });
     removeTyping();
     addMsg('ai', reply);
 
   } catch (err) {
     removeTyping();
-    addMsg('ai', `⚠ Error: ${err.message}\n\nCheck your API key in Settings.`);
+    addMsg('ai', `⚠ Error: ${err.message}\n\nSettings mein API key check karo.`);
   }
 
   busy = false;
